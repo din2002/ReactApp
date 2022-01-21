@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Add from "./Components/Add";
+import Students from "./Components/Students";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  var student={
+    "name":"Dinesh",
+    "roll_no":27,
+    "city":"NSP",
+    "age":19
+  }
+  function showData(){
+    fetch("https://reqres.in/api/users")
+    .then(response => response.json())
+    .then(data=>{
+      console.table(data.data)
+    })
 
-export default App;
+  }
+  return (
+    <>
+    <h1> Hello Dinesh</h1>
+    <button onClick={showData}>Click Me</button>
+    <Add/>
+    <Students data={student}/>
+    </>
+  );
+  }
+
+  export default App;
